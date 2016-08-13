@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head><meta charset="utf-8" />
-<title>index</title>
+<title>Eron Fraud Detection</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -11751,27 +11751,24 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Eron-Fraud-Detection">Eron Fraud Detection<a class="anchor-link" href="#Eron-Fraud-Detection">&#182;</a></h1><p>This is the final project of udacity class "Intro to Machine Learning".</p>
+<h1 id="Eron-Fraud-Detection">Eron Fraud Detection<a class="anchor-link" href="#Eron-Fraud-Detection">&#182;</a></h1><p>This is the final project of udacity class "<a href="https://classroom.udacity.com/courses/ud120">Intro to Machine Learning</a>". The goal is building an algorithm to identify Enron employees who may have committed fraud based on the public Enron financial and email dataset.</p>
+<p>This notebook relies on code provided by the class, which is available <a href="https://github.com/udacity/ud120-projects">here</a>. Put this notebook in the final_project folder and it should work.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[255]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="kn">import</span> <span class="nn">pickle</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;../tools/&quot;</span><span class="p">)</span>
-<span class="kn">from</span> <span class="nn">feature_format</span> <span class="kn">import</span> <span class="n">featureFormat</span><span class="p">,</span> <span class="n">targetFeatureSplit</span>
-<span class="kn">import</span> <span class="nn">matplotlib</span>
-<span class="n">matplotlib</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;ggplot&#39;</span><span class="p">)</span>
 
 <span class="c1">### Load the dictionary containing the dataset</span>
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;final_project_dataset.pkl&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">data_file</span><span class="p">:</span>
     <span class="n">data_dict</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">data_file</span><span class="p">)</span>
-
     
 <span class="c1">### Also convert to dataframe for easy manipulation.</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
@@ -11794,7 +11791,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Task-1:-Select-what-features-you'll-use">Task 1: Select what features you'll use<a class="anchor-link" href="#Task-1:-Select-what-features-you'll-use">&#182;</a></h3><p>I choose to select all the features available at this step.</p>
+<h2 id="Task-1:-Select-what-features-you'll-use">Task 1: Select what features you'll use<a class="anchor-link" href="#Task-1:-Select-what-features-you'll-use">&#182;</a></h2><p>I choose to select all the features available at this step.</p>
 
 </div>
 </div>
@@ -11826,17 +11823,20 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Task-2:-Remove-outliers">Task 2: Remove outliers<a class="anchor-link" href="#Task-2:-Remove-outliers">&#182;</a></h3><p>Use scatter plot to identify outliers. Start with salary.</p>
+<h2 id="Task-2:-Remove-outliers">Task 2: Remove outliers<a class="anchor-link" href="#Task-2:-Remove-outliers">&#182;</a></h2><p>Use scatter plot to identify outliers. Start with salary.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[261]:</div>
+<div class="prompt input_prompt">In&nbsp;[294]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="n">matplotlib</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;ggplot&#39;</span><span class="p">)</span>
+
+<span class="o">%</span><span class="k">matplotlib</span> inline
 
 <span class="n">df</span><span class="p">[</span><span class="s1">&#39;salary&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;salary&#39;</span><span class="p">)</span>
 </pre></div>
@@ -11849,11 +11849,11 @@ div#notebook {
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[261]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[294]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x11f0aa5d0&gt;</pre>
+<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x11c08c6d0&gt;</pre>
 </div>
 
 </div>
@@ -11862,99 +11862,123 @@ div#notebook {
 
 
 <div class="output_png output_subarea ">
-<img src="data:image/png;base64,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
-9OpxAAAAAElFTkSuQmCC
+<img src="data:image/png;base64,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
 "
 >
 </div>
@@ -14015,7 +14039,7 @@ YII=
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Task-3:-Create-new-feature(s)">Task 3: Create new feature(s)<a class="anchor-link" href="#Task-3:-Create-new-feature(s)">&#182;</a></h3>
+<h2 id="Task-3:-Create-new-feature(s)">Task 3: Create new feature(s)<a class="anchor-link" href="#Task-3:-Create-new-feature(s)">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -14026,6 +14050,18 @@ YII=
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># My first thought is to build TFIDF matrix. However, it turns out the email data is very incomplete. </span>
 <span class="c1"># We only have 19 people&#39;s email out of the 145 people given.</span>
+<span class="c1">#</span>
+<span class="c1"># There are two sets of email data provided:</span>
+<span class="c1"># </span>
+<span class="c1"># 1. Email folder. For each person, if we have their email, there will be a folder named </span>
+<span class="c1">#    LastName-FirstLetterOfFirstName. For example:</span>
+<span class="c1">#    maildir/</span>
+<span class="c1">#      allen-p</span>
+<span class="c1">#        inbox/</span>
+<span class="c1">#        send/</span>
+<span class="c1">#</span>
+<span class="c1"># 2. Email index file: For each person, we might have a file named </span>
+
 
 <span class="k">def</span> <span class="nf">name_to_folder_name</span><span class="p">(</span><span class="n">last_first_middle</span><span class="p">):</span>
     <span class="n">parts</span> <span class="o">=</span> <span class="n">last_first_middle</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
@@ -14039,14 +14075,13 @@ YII=
         <span class="k">return</span> <span class="s1">&#39;&#39;</span>
     <span class="k">return</span> <span class="n">parts</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span> <span class="o">+</span> <span class="n">parts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;@enron.com.txt&#39;</span>
 
+
 <span class="n">name_count</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">folder_count</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">file_count</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">values</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="s1">&#39;../maildir/&#39;</span> <span class="o">+</span> <span class="n">name_to_folder_name</span><span class="p">(</span><span class="n">name</span><span class="p">)):</span>
         <span class="n">folder_count</span> <span class="o">=</span> <span class="n">folder_count</span> <span class="o">+</span> <span class="mi">1</span>
-    <span class="c1">#else:</span>
-        <span class="c1"># print name_to_folder_name(name)</span>
     <span class="n">file_name_suffix</span> <span class="o">=</span> <span class="n">name_to_file_name</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s1">&#39;emails_by_address/&#39;</span> <span class="o">+</span> <span class="s1">&#39;from_&#39;</span> <span class="o">+</span> <span class="n">file_name_suffix</span><span class="p">)</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s1">&#39;emails_by_address/&#39;</span> <span class="o">+</span> <span class="s1">&#39;to_&#39;</span> <span class="o">+</span> <span class="n">file_name_suffix</span><span class="p">):</span>
         <span class="n">file_count</span> <span class="o">=</span> <span class="n">file_count</span> <span class="o">+</span> <span class="mi">1</span>
@@ -14079,9 +14114,13 @@ YII=
 <div class="prompt input_prompt">In&nbsp;[271]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="c1">## My second thought is scale the number of poi related emails by total number of emails.</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="c1">## My second thought is to scale the number of poi related emails by total number of emails.</span>
 
 <span class="n">df</span><span class="p">[</span><span class="s1">&#39;ratio_of_poi_related_email&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;from_poi_to_this_person&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;from_this_person_to_poi&#39;</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;to_messages&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;from_messages&#39;</span><span class="p">])</span>
+
+<span class="c1"># Also add to feature_list.</span>
+<span class="k">if</span> <span class="s1">&#39;ratio_of_poi_related_email&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">features_list</span><span class="p">:</span>
+    <span class="n">features_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;ratio_of_poi_related_email&#39;</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -14094,7 +14133,7 @@ YII=
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Task-4:-Try-a-varity-of-classifiers">Task 4: Try a varity of classifiers<a class="anchor-link" href="#Task-4:-Try-a-varity-of-classifiers">&#182;</a></h3>
+<h2 id="Task-4:-Try-a-varity-of-classifiers">Task 4: Try a varity of classifiers<a class="anchor-link" href="#Task-4:-Try-a-varity-of-classifiers">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -14112,17 +14151,7 @@ YII=
 <span class="kn">import</span> <span class="nn">tester</span>
 
 <span class="c1">### Store to my_dataset for easy export below.</span>
-<span class="c1">#data_dict.pop(&#39;TOTAL&#39;)</span>
 <span class="n">my_dataset</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="n">orient</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">)</span>
-<span class="k">if</span> <span class="s1">&#39;ratio_of_poi_related_email&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">features_list</span><span class="p">:</span>
-    <span class="n">features_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;ratio_of_poi_related_email&#39;</span><span class="p">)</span>
-
-<span class="c1">### Extract features and labels from dataset for local testing</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">featureFormat</span><span class="p">(</span><span class="n">my_dataset</span><span class="p">,</span> <span class="n">features_list</span><span class="p">,</span> <span class="n">sort_keys</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
-<span class="n">labels</span><span class="p">,</span> <span class="n">features</span> <span class="o">=</span> <span class="n">targetFeatureSplit</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-
-<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">cross_validation</span>
-<span class="n">features_train</span><span class="p">,</span> <span class="n">features_test</span><span class="p">,</span> <span class="n">labels_train</span><span class="p">,</span> <span class="n">labels_test</span> <span class="o">=</span> <span class="n">cross_validation</span><span class="o">.</span><span class="n">train_test_split</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span> 
 </pre></div>
 
 </div>
@@ -14168,12 +14197,6 @@ YII=
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">tree</span>
-<span class="n">features_list_2</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;poi&#39;</span><span class="p">,</span>
-                 <span class="s1">&#39;salary&#39;</span><span class="p">,</span> <span class="s1">&#39;total_payments&#39;</span><span class="p">,</span>
-                 <span class="s1">&#39;exercised_stock_options&#39;</span><span class="p">,</span> <span class="s1">&#39;bonus&#39;</span><span class="p">,</span> <span class="s1">&#39;restricted_stock&#39;</span><span class="p">,</span>
-                 <span class="s1">&#39;total_stock_value&#39;</span><span class="p">,</span> <span class="s1">&#39;expenses&#39;</span><span class="p">,</span> <span class="s1">&#39;loan_advances&#39;</span><span class="p">,</span>
-                 <span class="s1">&#39;director_fees&#39;</span><span class="p">,</span> <span class="s1">&#39;deferred_income&#39;</span><span class="p">,</span> <span class="s1">&#39;long_term_incentive&#39;</span><span class="p">,</span>
-                 <span class="s1">&#39;to_messages&#39;</span><span class="p">,</span> <span class="s1">&#39;shared_receipt_with_poi&#39;</span><span class="p">,</span> <span class="s1">&#39;from_poi_to_this_person&#39;</span><span class="p">]</span>
 <span class="n">clf</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">DecisionTreeClassifier</span><span class="p">()</span>
 <span class="n">tester</span><span class="o">.</span><span class="n">test_classifier</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">my_dataset</span><span class="p">,</span> <span class="n">features_list</span><span class="p">)</span>
 </pre></div>
@@ -14422,6 +14445,193 @@ YII=
 </div>
 </div>
 
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Task-5:-Tune-classifier">Task 5: Tune classifier<a class="anchor-link" href="#Task-5:-Tune-classifier">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[295]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="c1">### Task 5: Tune your classifier to achieve better than .3 precision and recall </span>
+<span class="c1">### using our testing script. Check the tester.py script in the final project</span>
+<span class="c1">### folder for details on the evaluation method, especially the test_classifier</span>
+<span class="c1">### function. Because of the small size of the dataset, the script uses</span>
+<span class="c1">### stratified shuffle split cross validation. For more info: </span>
+<span class="c1">### http://scikit-learn.org/stable/modules/generated/sklearn.cross_validation.StratifiedShuffleSplit.html</span>
+
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">ensemble</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">ensemble</span><span class="o">.</span><span class="n">AdaBoostClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">tester</span><span class="o">.</span><span class="n">test_classifier</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">my_dataset</span><span class="p">,</span> <span class="n">features_list</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>AdaBoostClassifier(algorithm=&#39;SAMME.R&#39;, base_estimator=None,
+          learning_rate=1.0, n_estimators=50, random_state=None)
+	Accuracy: 0.83933	Precision: 0.37025	Recall: 0.29250	F1: 0.32682	F2: 0.30532
+	Total predictions: 15000	True positives:  585	False positives:  995	False negatives: 1415	True negatives: 12005
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[296]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">ensemble</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">ensemble</span><span class="o">.</span><span class="n">AdaBoostClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">tester</span><span class="o">.</span><span class="n">test_classifier</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">my_dataset</span><span class="p">,</span> <span class="n">features_list</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>AdaBoostClassifier(algorithm=&#39;SAMME.R&#39;, base_estimator=None,
+          learning_rate=1.0, n_estimators=100, random_state=None)
+	Accuracy: 0.84233	Precision: 0.38172	Recall: 0.29450	F1: 0.33249	F2: 0.30860
+	Total predictions: 15000	True positives:  589	False positives:  954	False negatives: 1411	True negatives: 12046
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[297]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">ensemble</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">ensemble</span><span class="o">.</span><span class="n">AdaBoostClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">tester</span><span class="o">.</span><span class="n">test_classifier</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">my_dataset</span><span class="p">,</span> <span class="n">features_list</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>AdaBoostClassifier(algorithm=&#39;SAMME.R&#39;, base_estimator=None,
+          learning_rate=1.0, n_estimators=200, random_state=None)
+	Accuracy: 0.84220	Precision: 0.37840	Recall: 0.28550	F1: 0.32545	F2: 0.30024
+	Total predictions: 15000	True positives:  571	False positives:  938	False negatives: 1429	True negatives: 12062
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[299]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">ensemble</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">ensemble</span><span class="o">.</span><span class="n">AdaBoostClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">75</span><span class="p">)</span>
+<span class="n">tester</span><span class="o">.</span><span class="n">test_classifier</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">my_dataset</span><span class="p">,</span> <span class="n">features_list</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>AdaBoostClassifier(algorithm=&#39;SAMME.R&#39;, base_estimator=None,
+          learning_rate=1.0, n_estimators=75, random_state=None)
+	Accuracy: 0.84367	Precision: 0.38949	Recall: 0.30400	F1: 0.34148	F2: 0.31796
+	Total predictions: 15000	True positives:  608	False positives:  953	False negatives: 1392	True negatives: 12047
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>So n_estimators = 75 will give us a result with precision 0.39 and recall 0.30.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Task-6:-Dump-classifier,-dataset-and-feature_list">Task 6: Dump classifier, dataset and feature_list<a class="anchor-link" href="#Task-6:-Dump-classifier,-dataset-and-feature_list">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[301]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="c1">### Task 6: Dump your classifier, dataset, and features_list so anyone can</span>
+<span class="c1">### check your results. You do not need to change anything below, but make sure</span>
+<span class="c1">### that the version of poi_id.py that you submit can be run on its own and</span>
+<span class="c1">### generates the necessary .pkl files for validating your results.</span>
+
+<span class="kn">from</span> <span class="nn">tester</span> <span class="kn">import</span> <span class="n">dump_classifier_and_data</span>
+
+<span class="n">dump_classifier_and_data</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">my_dataset</span><span class="p">,</span> <span class="n">features_list</span><span class="p">)</span>
+</pre></div>
+
+</div>
 </div>
 </div>
 
